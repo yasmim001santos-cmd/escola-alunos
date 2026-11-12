@@ -1,0 +1,15 @@
+from django import forms
+
+from .models import Aluno
+
+
+class AlunoForm(forms.ModelForm):
+    class Meta:
+        model = Aluno
+        fields = ["nome", "email", "data_nascimento", "turma"]
+        widgets = {
+            "data_nascimento": forms.DateInput(
+                attrs={"type": "date"},
+                format="%Y-%m-%d"
+            ),
+        }
